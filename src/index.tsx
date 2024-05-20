@@ -12,13 +12,16 @@ import axios from "axios";
 
 import { Provider } from 'react-redux';
 import { store } from './app/store';
+// import { createBrowserHistory } from 'history';
+
+// const history = createBrowserHistory({ basename: '/labfis' });
 
 axios.defaults.withCredentials = true;
 
 const App = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL || '/labfis'}>
     <Provider store={store}>
-      <Router />
+      <Router  />
     </Provider>
   </BrowserRouter>
 );
