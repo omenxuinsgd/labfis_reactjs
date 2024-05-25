@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import ReactDOM from "react-dom";
 // import { I18nextProvider } from "react-i18next";
 // import "antd/dist/antd.css";
@@ -21,7 +21,14 @@ axios.defaults.withCredentials = true;
 const App = () => (
   <BrowserRouter basename={process.env.PUBLIC_URL || '/labfis'}>
     <Provider store={store}>
-      <Router  />
+      <Switch>
+    <Route exact path="/">
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/">
+          <Router />
+        </Route>   
+      </Switch> 
     </Provider>
   </BrowserRouter>
 );
