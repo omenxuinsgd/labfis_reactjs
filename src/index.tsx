@@ -12,24 +12,34 @@ import axios from "axios";
 
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-// import { createBrowserHistory } from 'history';
-
-// const history = createBrowserHistory({ basename: '/labfis' });
 
 axios.defaults.withCredentials = true;
 
-const App = () => (
-  <BrowserRouter basename={process.env.PUBLIC_URL || '/labfis'}>
+const ExceptionPage = () => null;
+
+const LabfisApp = () => (
+  <BrowserRouter basename={'/labfis'}>
     <Provider store={store}>
       <Switch>
-    <Route exact path="/">
+        <Route exact path="/">
           <Redirect to="/home" />
         </Route>
         <Route path="/">
           <Router />
-        </Route>   
-      </Switch> 
+        </Route>
+      </Switch>
     </Provider>
+  </BrowserRouter>
+);
+
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={ExceptionPage} />
+      <Route path="/">
+        <LabfisApp />
+      </Route>
+    </Switch>
   </BrowserRouter>
 );
 
