@@ -55,7 +55,7 @@ const Router = () => {
                       || location.pathname === "/add/labs" || location.pathname === "/labs"
                       || location.pathname === "/add/fasilitas" || location.pathname === "/list/news"
                       || location.pathname === "/add/news" || location.pathname === "/data/lab"
-                      || location.pathname === "/virtuallab" || location.pathname === "/";
+                      || location.pathname === "/virtuallab";
 
   return (
     <Suspense fallback={null}>
