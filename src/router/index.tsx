@@ -10,40 +10,40 @@ import { useParams } from 'react-router-dom';
 
 
 // Definisikan tipe untuk parameter dinamis (misalnya ID) jika diperlukan
-interface RouteParams {
-  id: string; // Sesuaikan dengan tipe data yang sesuai dengan ID Anda
-  lab: string;
-}
+// interface RouteParams {
+//   id: string; // Sesuaikan dengan tipe data yang sesuai dengan ID Anda
+//   lab: string;
+// }
 
 const Router = () => {
-  const [jadwalLab, setJadwalLab] = useState([]);
-  // const [msg, setMsg] = useState("");
-  const { lab } = useParams<RouteParams>();
-  // const apiKey = process.env.REACT_APP_API_KEY;
-  const apiUrl = process.env.REACT_APP_API_URL;
-  // const { user } = useSelector((state) => state.auth);
+  // const [jadwalLab, setJadwalLab] = useState([]);
+  // // const [msg, setMsg] = useState("");
+  // const { lab } = useParams<RouteParams>();
+  // // const apiKey = process.env.REACT_APP_API_KEY;
+  // const apiUrl = process.env.REACT_APP_API_URL;
+  // // const { user } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    const getJadwalByLab = async () => {
-      try {
-        const response = await axios.get(`${apiUrl}/jadwal/perlab/${lab}`);
-        setJadwalLab(response.data.lab);
-      } catch (error) {
-        if ((error as AxiosError).response) {
-          // setMsg((error as AxiosError).response?.data.msg);
-        }
-      }
-    };
-    getJadwalByLab();
-  }, [lab]);
+  // useEffect(() => {
+  //   const getJadwalByLab = async () => {
+  //     try {
+  //       const response = await axios.get(`${apiUrl}/jadwal/perlab/${lab}`);
+  //       setJadwalLab(response.data.lab);
+  //     } catch (error) {
+  //       if ((error as AxiosError).response) {
+  //         // setMsg((error as AxiosError).response?.data.msg);
+  //       }
+  //     }
+  //   };
+  //   getJadwalByLab();
+  // }, [lab]);
 
-  const { id } = useParams<RouteParams>();
+  // const { id } = useParams<RouteParams>();
 
   const location = useLocation();
   const isAsliPath = location.pathname === "/asli" || location.pathname === "/jebakan" || 
                       location.pathname === "/dashboard" || location.pathname === "/users"
-                      || location.pathname === "/users/add" || location.pathname === `/users/edit/${id}`
-                      || location.pathname === "/products/add" || location.pathname === `/products/edit/${id}`
+                      || location.pathname === "/users/add"
+                      || location.pathname === "/products/add"
                       || location.pathname === "/products" || location.pathname === "/Login"
                       || location.pathname === "/products/list" || location.pathname === "/jadwal/perlab/instrument"
                       || location.pathname === "/jadwal/perlab/astrofisika" || location.pathname === "/jadwal/perlab/geofisika"
